@@ -1,0 +1,9 @@
+body {
+    background: #f8f6f6;
+}
+
+.hotelsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

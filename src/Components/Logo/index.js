@@ -1,10 +1,10 @@
 import './index.css'
 
-const Logo = () => {
+const Logo = (props) => {
 
     return (
         <div className='logo'>
-            <img src='./img/imageTwo.png' alt='logo'/>
+            <img src={props.logoSrc} alt='logo'/>
         </div>
     )
 }

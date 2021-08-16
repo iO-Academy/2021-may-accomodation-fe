@@ -7,7 +7,7 @@ import Button from "../Button";
 const MainPage = () => {
     return (
         <div className='background-image' style={{backgroundImage: "url(./img/Mountain.jpeg)"}}>
-            <Logo/>
+            <Logo logoSrc='../img/imageTwo.png'/>
             <div>
                 <h1 className='title'>Find your perfect trip!</h1>
             </div>
