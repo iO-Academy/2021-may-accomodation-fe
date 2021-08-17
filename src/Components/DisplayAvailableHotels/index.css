@@ -7,3 +7,34 @@ body {
     align-items: center;
     justify-content: space-between;
 }
+
+.imageSize {
+    width: 300px;
+    height: 250px;
+}
+
+.main-hotels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.content-hotels {
+    padding: 100px 10px 30px 18px;
+}
+
+.pharagraphs-top {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0 10px 0;
+}
+
+.pharagraphs-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 20px 15px;
+}
+
+.button-booking {
+    text-align: center;
+}

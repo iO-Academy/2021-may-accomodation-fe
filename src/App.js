@@ -5,42 +5,23 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 
 export default function App() {
+
     return (
         <Router>
             <div>
-                <Link to="/hotels">hotels</Link>
-            </div>
-            <div>
                 <Switch>
-                    <Route exact path="/">
-                        <AppMainPage/>
-                    </Route>
-                    <Route path="/hotels">
-                        <DisplayHotels/>
-                    </Route>
+                    <Route path="/" component={MainPage} exact />
+                    <Route path="/hotels" component={DisplayAvailableHotels} />
                 </Switch>
             </div>
         </Router>
     );
 }
 
-function AppMainPage() {
-    return (
-        <div className="App">
-            <MainPage/>
-        </div>
-    );
-}
 
-function DisplayHotels() {
-    return (
-        <div>
-            <DisplayAvailableHotels/>
-        </div>
-    );
-}
+
+
 
