@@ -28,6 +28,7 @@ const DisplayAvailableHotels = (props) => {
                 <Link to="/"><Button class='homeButton' valueButton='Home'/></Link>
             </div>
             <div className='main-hotels-container'>
+
                 {allHotels.map((hotel, index) => {
                     return (
                         <div className='content-hotels' key={index}>
@@ -41,7 +42,7 @@ const DisplayAvailableHotels = (props) => {
                                 </div>
                                 <div className='pharagraphs-bottom'>
                                     <p>Cost/night: £{hotel.cost_per_night}</p>
-                                    <p>available</p>
+                                    <p>Available</p>
                                 </div>
                             </div>
                             <div className='button-booking'>

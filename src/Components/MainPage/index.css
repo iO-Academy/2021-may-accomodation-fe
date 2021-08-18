@@ -59,3 +59,10 @@ input::-webkit-datetime-edit {
     color: #acaaaa;
     font-size: 17px;
 }
+
+.error {
+    text-align: center;
+    color: red;
+    font-size: 25px;
+    padding-top: 10px;
+}

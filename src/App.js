@@ -6,15 +6,22 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
+import {useEffect, useState} from "react";
 
 export default function App() {
+
+ const[searchData, setSearchData] = useState({})
 
     return (
         <Router>
             <div>
                 <Switch>
-                    <Route path="/" component={MainPage} exact />
-                    <Route path="/hotels" component={DisplayAvailableHotels} />
+                    <Route path="/" exact>
+                        <MainPage setSearchData={setSearchData} />
+                    </Route>
+                    <Route path="/hotels">
+                        <DisplayAvailableHotels searchData={searchData} />
+                    </Route>
                 </Switch>
             </div>
         </Router>
