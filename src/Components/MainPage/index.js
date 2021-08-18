@@ -25,13 +25,13 @@ const MainPage = (props) => {
     }
 
     const handleSearch = (e) => {
-        if (inputValueCheckin.length == 0 && inputValueCheckout.length == 0) {
+        if (inputValueCheckin.length === 0 && inputValueCheckout.length === 0) {
             e.preventDefault()
             setErrorMessage("These fields are required!")
-        } else if (inputValueCheckin.length == 0) {
+        } else if (inputValueCheckin.length === 0) {
             e.preventDefault()
             setErrorMessage("Checkin date must be added!")
-        } else if (inputValueCheckout.length == 0) {
+        } else if (inputValueCheckout.length === 0) {
             e.preventDefault()
             setErrorMessage("Checkout date must be added!")
         } else {

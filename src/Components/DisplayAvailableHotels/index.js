@@ -6,13 +6,16 @@ import {
 } from "react-router-dom";
 import Image from "../Image";
 import {useEffect, useState} from "react";
+import BookNowModal from "../BookNowModal";
 
 const DisplayAvailableHotels = (props) => {
 
     const [allHotels, setHotels] = useState([])
 
+    const [modalDisplay, setModalDisplay] = useState('hidden');
+
     const hotels = async (e) => {
-        const response = await fetch('http://localhost:3000/hotels')
+        const response = await fetch('http://localhost:3000/hotels?checkin='+ props.searchData.checkin + '&checkout='+ props.searchData.checkout)
         let hotelsResponse = await response.json();
         setHotels(hotelsResponse)
     }
@@ -46,12 +49,15 @@ const DisplayAvailableHotels = (props) => {
                                 </div>
                             </div>
                             <div className='button-booking'>
-                                <Button class='homeButton booking' valueButton='Book now'/>
+                                <Button class='homeButton booking' valueButton='Book now' click={() => {
+                                    setModalDisplay('show')
+                                }}/>
                             </div>
                         </div>
                     )
                 })}
             </div>
+            <BookNowModal displayModal={modalDisplay} />
         </div>
     )
 }

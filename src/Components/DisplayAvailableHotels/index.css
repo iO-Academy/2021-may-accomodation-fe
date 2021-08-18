@@ -38,3 +38,11 @@ body {
 .button-booking {
     text-align: center;
 }
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
