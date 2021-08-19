@@ -5,6 +5,7 @@ import Input from "../Input";
 import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import validator from 'validator'
+import moment from 'moment'
 
 const BookNowModal = (props) => {
 
@@ -108,7 +109,7 @@ const BookNowModal = (props) => {
                     <div>
                         <h1 className='heading'>Hotel's details</h1>
                         <p className='checkin-and-checkout-title'>Check in and Check out dates</p>
-                        <p>{props.checkin} - {props.checkout}</p>
+                        <p> {moment(new Date(props.checkin)).format("DD/MM/YYYY")} - {moment(new Date(props.checkout)).format("DD/MM/YYYY")}</p>
                     </div>
                     <div>
                         <h2 className='heading'>Confirm booking</h2>
