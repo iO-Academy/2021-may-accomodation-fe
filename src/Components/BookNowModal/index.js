@@ -2,15 +2,19 @@ import './index.css';
 import Button from "../Button";
 import Label from "../Label";
 import Input from "../Input";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {useState} from "react";
 import validator from 'validator'
 
 const BookNowModal = (props) => {
 
+    const history = useHistory()
 
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessageRespons, setErrorMessageRespons] = useState('');
+    const [errorMessageName, setErrorMessageName] = useState('');
     const [errorMessageEmail, setErrorMessageEmail] = useState('');
+    const [errorMessageAdult, setErrorMessageAdult] = useState('');
+    const [errorMessageChildren, setErrorMessageChildren] = useState('');
     const [inputName, setinputName] = useState('')
     const [inputEmail, setinputEmail] = useState('')
     const [inputAdult, setinputinputAdult] = useState('')
@@ -31,31 +35,69 @@ const BookNowModal = (props) => {
         setinputChildren(e.target.value)
     }
 
-    const handleSuccess = (e) => {
-        // if (inputName.length === 0 || inputEmail.length === 0 || inputAdult.length === 0 || inputChildren === 0) {
-        //     e.preventDefault()
-        //     setErrorMessage("These fields are required!")
-        //
-        // }  else if (inputName.length === 0) {
-        //     e.preventDefault()
-        //     setErrorMessage("A name must be added!")
-        // }
-        //
-        // else {
-        //
-        //     //we do fetch request, put data into object and send it to the db
-        //
-        //     // return props.handleName({
-        //     //     name: inputName,
-        //     //     email: inputEmail,
-        //     //     adults: inputAdult,
-        //     //     children: inputChildren
-        //     // })
-        // }
+    const handleSuccess = async (e) => {
+        let isValid = true;
 
-        if (!validator.isEmail(inputEmail)) {
+        if (inputName.length === 0) {
             e.preventDefault()
+            isValid = false;
+            setErrorMessageName("This field is required!")
+        } else if (!validator.isAlpha(inputName)) {
+            e.preventDefault()
+            isValid = false;
+            setErrorMessageName("It must be a valid name!")
+        } else {
+
+            setErrorMessageName(" ")
+        }
+
+        if (inputEmail.length === 0) {
+            e.preventDefault()
+            isValid = false;
+            setErrorMessageEmail("This field is required!")
+        } else if (!validator.isEmail(inputEmail)) {
+            e.preventDefault()
+            isValid = false;
             setErrorMessageEmail("It should be a valid email!")
+        } else {
+            setErrorMessageEmail(" ")
+        }
+
+        if (inputAdult.length === 0) {
+            e.preventDefault()
+            isValid = false;
+            setErrorMessageAdult("This field is required!")
+        } else {
+            setErrorMessageAdult(" ")
+        }
+
+        if (inputChildren.length === 0) {
+            e.preventDefault()
+            isValid = false;
+            setErrorMessageChildren("This field is required!")
+        } else {
+            setErrorMessageChildren(" ")
+        }
+
+        if (isValid) {
+            const rawResponse = await fetch('http://127.0.0.1:3000/hotels/' + props.hotelId, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: inputName,
+                    email: inputEmail,
+                    checkin: props.checkin,
+                    checkout: props.checkout,
+                    adult_guests: inputAdult,
+                    child_guests: inputChildren
+                })
+            });
+            const response = await rawResponse.json()
+            if (!response.success) {
+                setErrorMessageRespons('Something went wrong, please try again!')
+            } else {
+                history.push('/success')
+            }
         }
     }
 
@@ -69,13 +111,16 @@ const BookNowModal = (props) => {
                     <div>
                         <h1 className='heading'>Hotel's details</h1>
                         <p className='checkin-and-checkout-title'>Check in and Check out dates</p>
-                        <p>20 AUG - 21 Aug</p>
+                        <p>{props.checkin} - {props.checkout}</p>
                     </div>
                     <div>
                         <h2 className='heading'>Confirm booking</h2>
                         <div className='search-input'>
                             <Label class='inputTitle inputBookingTitle' labelValue='Name'/>
                             <Input classname='booking-input' type='text' changeHandler={handleName}/>
+                            <div className='error'>
+                                {errorMessageName && <div className="modal-errors"> {errorMessageName} </div>}
+                            </div>
                         </div>
                         <div className='search-input'>
                             <Label class='inputTitle inputBookingTitle' labelValue='Email'/>
@@ -89,22 +134,20 @@ const BookNowModal = (props) => {
                         </div>
                         <div className='search-input'>
                             <Label class='inputTitle inputBookingTitle' labelValue='Adults'/>
-                            <Input classname='booking-input' type='number' changeHandler={handleAdult}/>
+                            <Input classname='booking-input' type='number' changeHandler={handleAdult}
+                                   placeholder={errorMessageAdult} min="0" max="100"/>
                         </div>
                         <div className='search-input'>
                             <Label class='inputTitle inputBookingTitle' labelValue='Children'/>
-                            <Input classname='booking-input' type='number' changeHandler={handleChildren}/>
-                        </div>
-                        <div className='error'>
-                            {errorMessage && <div className="error"> {errorMessage} </div>}
+                            <Input classname='booking-input' type='number' changeHandler={handleChildren}
+                                   placeholder={errorMessageChildren} min="0" max="100"/>
                         </div>
                         <div>
-                            <Link to={{
-                                pathname: "/success"
-                            }}>
-                                <Button class='homeButton booking tripBtn' valueButton='Book your trip'
-                                        click={handleSuccess}/>
-                            </Link>
+                            <Button class='homeButton booking tripBtn' valueButton='Book your trip'
+                                    click={handleSuccess}/>
+                            <div className='error'>
+                                {errorMessageRespons && <div className="modal-errors"> {errorMessageRespons} </div>}
+                            </div>
                         </div>
                     </div>
                 </div>

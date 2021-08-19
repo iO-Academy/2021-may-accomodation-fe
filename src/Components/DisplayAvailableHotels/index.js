@@ -11,6 +11,7 @@ import BookNowModal from "../BookNowModal";
 const DisplayAvailableHotels = (props) => {
 
     const [allHotels, setHotels] = useState([])
+    const [hotelId, setHotelId] = useState('')
 
     const [modalDisplay, setModalDisplay] = useState('hidden');
 
@@ -50,6 +51,7 @@ const DisplayAvailableHotels = (props) => {
                             </div>
                             <div className='button-booking'>
                                 <Button class='homeButton booking' valueButton='Book now' click={() => {
+                                    setHotelId(hotel._id)
                                     setModalDisplay('show')
                                 }}/>
                             </div>
@@ -57,7 +59,7 @@ const DisplayAvailableHotels = (props) => {
                     )
                 })}
             </div>
-            <BookNowModal displayModal={modalDisplay} setModalDisplay={setModalDisplay} />
+            <BookNowModal hotelId={hotelId} checkin={props.searchData.checkin} checkout={props.searchData.checkout}  displayModal={modalDisplay} setModalDisplay={setModalDisplay} />
         </div>
     )
 }

@@ -74,3 +74,9 @@
 .modal-errors {
     font-size: 18px;
 }
+
+.booking-input::placeholder {
+    color: red;
+    font-size: 1.15rem;
+    text-align: center;
+}
