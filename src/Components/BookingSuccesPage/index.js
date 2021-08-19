@@ -16,8 +16,7 @@ const BookingSuccesPage = (props) => {
                     <i className="fas fa-check"></i>
                 </div>
                 <div className='thankyou-container'>
-                    <p className='thankyou-text'>Thank you! Your booking was successful. We hope you enjoy your trip
-                        !</p>
+                    <p className='thankyou-text'>Thank you! Your booking was successful. We hope you enjoy your trip!</p>
                 </div>
             </div>
         </div>

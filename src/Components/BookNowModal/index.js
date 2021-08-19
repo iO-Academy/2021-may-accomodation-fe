@@ -10,14 +10,14 @@ const BookNowModal = (props) => {
 
     const history = useHistory()
 
-    const [errorMessageRespons, setErrorMessageRespons] = useState('');
+    const [errorMessageResponse, setErrorMessageResponse] = useState('');
     const [errorMessageName, setErrorMessageName] = useState('');
     const [errorMessageEmail, setErrorMessageEmail] = useState('');
     const [errorMessageAdult, setErrorMessageAdult] = useState('');
     const [errorMessageChildren, setErrorMessageChildren] = useState('');
     const [inputName, setinputName] = useState('')
     const [inputEmail, setinputEmail] = useState('')
-    const [inputAdult, setinputinputAdult] = useState('')
+    const [inputAdult, setinputAdult] = useState('')
     const [inputChildren, setinputChildren] = useState('')
 
     const handleName = (e) => {
@@ -29,7 +29,7 @@ const BookNowModal = (props) => {
     }
 
     const handleAdult = (e) => {
-        setinputinputAdult(e.target.value)
+        setinputAdult(e.target.value)
     }
     const handleChildren = (e) => {
         setinputChildren(e.target.value)
@@ -39,15 +39,12 @@ const BookNowModal = (props) => {
         let isValid = true;
 
         if (inputName.length === 0) {
-            e.preventDefault()
             isValid = false;
             setErrorMessageName("This field is required!")
         } else if (!validator.isAlpha(inputName)) {
-            e.preventDefault()
             isValid = false;
             setErrorMessageName("It must be a valid name!")
         } else {
-
             setErrorMessageName(" ")
         }
 
@@ -93,10 +90,10 @@ const BookNowModal = (props) => {
                 })
             });
             const response = await rawResponse.json()
-            if (!response.success) {
-                setErrorMessageRespons('Something went wrong, please try again!')
-            } else {
+            if (response.success) {
                 history.push('/success')
+            } else {
+                setErrorMessageResponse('Something went wrong, please try again!')
             }
         }
     }
@@ -146,7 +143,7 @@ const BookNowModal = (props) => {
                             <Button class='homeButton booking tripBtn' valueButton='Book your trip'
                                     click={handleSuccess}/>
                             <div className='error'>
-                                {errorMessageRespons && <div className="modal-errors"> {errorMessageRespons} </div>}
+                                {errorMessageResponse && <div className="modal-errors"> {errorMessageResponse} </div>}
                             </div>
                         </div>
                     </div>
