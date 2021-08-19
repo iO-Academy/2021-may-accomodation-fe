@@ -15,7 +15,7 @@
     display: flex;
     padding: 20px 0px 20px 45px;
     background: white;
-    width: 660px;
+    width: 482px;
     margin: 65px auto 0 auto;
     border-radius: 50px;
 }
@@ -23,10 +23,6 @@
 .search-input {
     display: flex;
     flex-direction: column;
-}
-
-.checkin {
-    padding-left: 35px;
 }
 
 .search-input-button {

@@ -7,6 +7,7 @@ import {
     Route,
 } from "react-router-dom";
 import {useEffect, useState} from "react";
+import BookingSuccesPage from "./Components/BookingSuccesPage";
 
 export default function App() {
 
@@ -21,6 +22,9 @@ export default function App() {
                     </Route>
                     <Route path="/hotels">
                         <DisplayAvailableHotels searchData={searchData} />
+                    </Route>
+                    <Route path="/success">
+                        <BookingSuccesPage />
                     </Route>
                 </Switch>
             </div>

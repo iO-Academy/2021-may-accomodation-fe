@@ -57,9 +57,9 @@ const DisplayAvailableHotels = (props) => {
                     )
                 })}
             </div>
-            <BookNowModal displayModal={modalDisplay} />
+            <BookNowModal displayModal={modalDisplay} setModalDisplay={setModalDisplay} />
         </div>
     )
 }
 
-export default DisplayAvailableHotels;
+export default DisplayAvailableHotels

@@ -8,13 +8,8 @@ import {useEffect, useState} from "react";
 const MainPage = (props) => {
 
     const [errorMessage, setErrorMessage] = useState('');
-    const [inputValueLocation, setinputValueLocation] = useState('')
     const [inputValueCheckin, setinputValueCheckin] = useState('')
     const [inputValueCheckout, setinputValueCheckout] = useState('')
-
-    const handleLocationChange = (e) => {
-        setinputValueLocation(e.target.value)
-    }
 
     const handleCheckinChange = (e) => {
         setinputValueCheckin(e.target.value)
@@ -46,14 +41,9 @@ const MainPage = (props) => {
                 <h1 className='title'>Find your perfect trip!</h1>
             </div>
             <div className='search-bar'>
-                <div className='search-input'>
-                    <Label class='inputTitle locationTitle' labelValue='Location'/>
-                    <Input classname='borderNone' type='text' placeholder='Where are you going?'
-                           changeHandler={handleLocationChange}/>
-                </div>
                 <div className='search-input checkin'>
                     <Label class='inputTitle' labelValue='Check in'/>
-                    <Input classname='borderNone' type='date' changeHandler={handleCheckinChange} max="31-12-2022"/>
+                    <Input classname='borderNone' type='date' changeHandler={handleCheckinChange}/>
 
                 </div>
                 <div className='search-input'>
@@ -64,7 +54,6 @@ const MainPage = (props) => {
                     to={{
                         pathname: "/hotels",
                         state: {
-                            inputValueLocation: inputValueLocation,
                             inputValueCheckin: inputValueCheckin,
                             inputValueCheckout: inputValueCheckout
                         }
