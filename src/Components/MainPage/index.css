@@ -1,0 +1,64 @@
+.background-image {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+.title {
+    color: white;
+    text-align: center;
+    padding-top: 180px;
+    font-size: 3rem;
+}
+
+.search-bar {
+    display: flex;
+    padding: 20px 0px 20px 45px;
+    background: white;
+    width: 482px;
+    margin: 65px auto 0 auto;
+    border-radius: 50px;
+}
+
+.search-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-input-button {
+    background: rgb(255, 56, 92);
+    border-radius: 24px;
+    border: none;
+    outline: none;
+    padding: 18px;
+    cursor: pointer;
+}
+
+.search-input-button:hover {
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%)
+}
+
+.fa-search {
+    color: rgb(255, 255, 255)
+}
+
+input::-webkit-calendar-picker-indicator {
+    right: 30px;
+    z-index: 20;
+    position: relative;
+    color: #acaaaa;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input::-webkit-datetime-edit {
+    color: #acaaaa;
+    font-size: 17px;
+}
+
+.error {
+    text-align: center;
+    color: red;
+    font-size: 25px;
+    padding-top: 10px;
+}

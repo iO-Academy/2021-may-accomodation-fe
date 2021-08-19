@@ -1,0 +1,10 @@
+.borderNone {
+    border: none;
+    outline: none;
+}
+
+::placeholder {
+    font-size: 0.9rem;
+    font-weight: lighter;
+    color: #acaaaa;
+}

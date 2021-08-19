@@ -1,0 +1,82 @@
+.modal-container {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.2);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-content {
+    color: #2b2626;
+    text-align: center;
+    position: fixed;
+    background: #ffffff;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 820px;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.closeBotton {
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 24px;
+    border: none;
+    line-height: 24px;
+    text-align: center;
+    background: none;
+    cursor: pointer;
+    font-size: 3rem;
+    transition: 0.25s;
+}
+
+.closeBotton:hover {
+    transform: scale(1.2);
+}
+
+.checkin-and-checkout-title {
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.booking-input {
+    font-size: 20px;
+    border: 1px #e72424 solid;
+    border-radius: 9px;
+    padding: 12px;
+    margin: auto;
+    width: 400px;
+    cursor: pointer;
+    outline-color: brown;
+}
+
+.heading {
+    padding-top: 20px;
+}
+
+.inputBookingTitle {
+    padding: 15px;
+}
+
+.booking.tripBtn {
+    padding: 18px 20px;
+    margin-right: 2px;
+}
+
+.tripBtn {
+    margin-top: 30px;
+}
+
+.modal-errors {
+    font-size: 18px;
+}
+
+.booking-input::placeholder {
+    color: red;
+    font-size: 1.15rem;
+    text-align: center;
+}
